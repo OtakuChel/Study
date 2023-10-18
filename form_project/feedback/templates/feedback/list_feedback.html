@@ -1,0 +1,38 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}
+    Список всех отзывов
+{% endblock %}
+
+{% block content %}
+<form method="post">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="5">Таблица отзывов</th>
+            </tr>
+          </thead>
+          <tbody>
+              <div class="form-style {% if field.errors %} errors {% endif %}">
+                  <td class="form-style"> Id </td>
+                  <td class="form-style"> Имя </td>
+                  <td class="form-style"> Фамилия </td>
+                  <td class="form-style"> Отзыв </td>
+                  <td class="form-style"> Рейтинг </td>
+              </div>
+          {% for feedback in feedbacks %}
+          <tr>
+              <div class="form-style {% if field.errors %} errors {% endif %}">
+                  <td class="form-style {% if field.errors %} errors {% endif %}"> {{ feedback.id }} </td>
+                  <td class="form-style {% if field.errors %} errors {% endif %}"> {{ feedback.name }} </td>
+                  <td class="form-style {% if field.errors %} errors {% endif %}"> {{ feedback.surname }} </td>
+                  <td class="form-style {% if field.errors %} errors {% endif %}"> {{ feedback.feedback }} </td>
+                  <td class="form-style {% if field.errors %} errors {% endif %}"> {{ feedback.rating }} </td>
+              </div>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+</form>
+{% endblock %}
+
